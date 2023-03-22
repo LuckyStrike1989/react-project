@@ -9,6 +9,7 @@ const port = 5000;
 // body-parsor
 
 app.use(express.static(path.join(__dirname, "../client/build")));
+app.use("/image", express.static("./image"));
 app.use(express.json());
 app.use(express.urlencoded({ extended : true }));
 

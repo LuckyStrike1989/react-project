@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom';
 import { UploadDiv, UploadForm, UploadButtonDiv } from "../../Style/UploadCSS.js";
 import axios from 'axios';
+import ImageUpload from "./ImageUpload.js";
+
 function Edit() {
     let params = useParams();
     let navigate = useNavigate();
@@ -9,6 +11,7 @@ function Edit() {
     const [PostInfo, setPostInfo] = useState({});
     const [Title, setTitle] = useState("")
     const [Content, setContent] = useState("");
+    const [Image, setImage] = useState()
 
     useEffect(() => {
         let body = {
@@ -27,6 +30,7 @@ function Edit() {
     useEffect(() => {
         setTitle(PostInfo.title);
         setContent(PostInfo.content);
+        setImage(PostInfo.image);
     }, [PostInfo])
 
     const onSubmit = (e) => {
@@ -40,6 +44,7 @@ function Edit() {
             title : Title
             , content: Content
             , postNum: params.postNum
+            , image: Image
         }
     
         axios.post("/api/post/edit", body).then((response) => {
@@ -67,6 +72,7 @@ function Edit() {
             <UploadForm>
                 <label htmlFor="title">제목</label>
                 <input type="text" id="title" value={Title} onChange={getCurrentTitleValue}/><br/>
+                <ImageUpload Image={Image} setImage={setImage} />
                 <label htmlFor="content">내용</label>
                 <textarea id="content" value={Content} onChange={getCurrentContentValue}/>
                 <UploadButtonDiv>

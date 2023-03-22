@@ -12,8 +12,8 @@ function Test() {
      2. setState를 html 태그의 on 속성 호출 : function(){}
      */
 
-    const [Temp, setTemp] = useState(0); 
-    const [arrTemp, setArrTemp] = useState([]); 
+    const [Temp, setTemp] = useState(0);
+    const [arrTemp, setArrTemp] = useState([]);
     const [Number, setNumber] = useState(0);
     const [Flag, setFlag] = useState(true);
     const [Content, setContent] = useState("");

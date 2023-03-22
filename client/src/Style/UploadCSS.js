@@ -7,16 +7,15 @@ const UploadDiv = styled.div`
 `;
 
 const UploadForm = styled.form`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     width: 80%;
     margin: 0 auto;
-    input {
-        width: 100%;
+    flex-direction: column;
+    display: flex;
+    #title {
         border-radius: 10px;
         border: 1px solid #c6c6c6;
         padding: 10px;
+        margin-bottom: 10px;
         &:active,
         &:focus {
             outline: none;
