@@ -50,6 +50,7 @@ function Detail() {
         }
     };
 
+    // 내부 storage 저장 할때, http://localhost:5000/${PostInfo.image}
     return (
         <PostDiv>
             {
@@ -58,7 +59,7 @@ function Detail() {
                     <>
                         <Post>
                             <h1>{PostInfo.title}</h1>
-                            { PostInfo.image ?  <img src={`http://localhost:5000/${PostInfo.image}`} alt="" style={{ width: "100%", height: "auto" }} /> : null}
+                            { PostInfo.image ?  <img src={PostInfo.image} alt="" style={{ width: "100%", height: "auto" }} /> : null}
                             <p>{PostInfo.content}</p>   
                         </Post>
                         <BtnDiv>

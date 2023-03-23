@@ -1,11 +1,11 @@
 const express = require("express");
 const path = require("path");
 const mongoose = require("mongoose");
+const config = require("./config/key.js");
 
 const app = express();
 const port = 5000;
 
-// mongodb+srv://maestrois:lagenka0921!@cluster0.e5mts.mongodb.net/?retryWrites=true&w=majority
 // body-parsor
 
 app.use(express.static(path.join(__dirname, "../client/build")));
@@ -17,9 +17,8 @@ app.use("/api/post", require("./Router/post.js"));
 
 app.listen(port, () => {
     //mongoose.set('strictQuery', false);
-    mongoose.connect(
-        "mongodb+srv://maestrois:lagenka0921!@cluster0.e5mts.mongodb.net/Community?retryWrites=true&w=majority"
-    ).then(() => {
+    mongoose.connect(config.mongoURI)
+    .then(() => {
         console.log(`Example app listening at http://localhost:${port}`);
         console.log("Connecting MongoDB...");
     }).catch((err) => {
