@@ -10,6 +10,9 @@ import Upload from './Component/Post/Upload';
 import Detail from './Component/Post/Detail';
 import Edit from './Component/Post/Edit';
 
+import Login from "./Component/User/Login";
+import Register from './Component/User/Register';
+
 function App() {
     /*let Flag = true;
     let Arr = ['이근원', '홍길동', '임꺽정'];
@@ -38,8 +41,10 @@ function App() {
           <Route path="/" element={<Test />} />
           <Route path="/list" element={<List />} />
           <Route path="/upload" element={<Upload />} />
-          <Route path="/post/:postNum" element={<Detail />}/>
-          <Route path="/edit/:postNum" element={<Edit />}/>
+          <Route path="/post/:postNum" element={<Detail />} />
+          <Route path="/edit/:postNum" element={<Edit />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
         </Routes>
       </>
     );
