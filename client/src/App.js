@@ -1,7 +1,10 @@
 import './App.css';
 
-import React from "react";
+import React, { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
+import { useDispatch } from 'react-redux';
+import { loginUser, clearUser } from './Reducer/userSlice.js';
+import firebase from "./firebase.js";
 
 import Test from './Test';
 import Heading from './Component/Heading';
@@ -14,6 +17,33 @@ import Login from "./Component/User/Login";
 import Register from './Component/User/Register';
 
 function App() {
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+      firebase.auth().onAuthStateChanged((userInfo) => {
+        if( userInfo !== null ) {
+          dispatch(loginUser(userInfo.multiFactor.user));
+        } else {
+          dispatch(clearUser());
+        }
+      });
+    }, []);
+
+    return (
+      <>
+        <Heading />
+        <Routes>
+          <Route path="/" element={<Test />} />
+          <Route path="/list" element={<List />} />
+          <Route path="/upload" element={<Upload />} />
+          <Route path="/post/:postNum" element={<Detail />} />
+          <Route path="/edit/:postNum" element={<Edit />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+        </Routes>
+      </>
+    );
+
     /*let Flag = true;
     let Arr = ['이근원', '홍길동', '임꺽정'];
 
@@ -33,21 +63,6 @@ function App() {
         }
       </div>
     );*/
-
-    return (
-      <>
-        <Heading />
-        <Routes>
-          <Route path="/" element={<Test />} />
-          <Route path="/list" element={<List />} />
-          <Route path="/upload" element={<Upload />} />
-          <Route path="/post/:postNum" element={<Detail />} />
-          <Route path="/edit/:postNum" element={<Edit />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-        </Routes>
-      </>
-    );
 }
 
 export default App;

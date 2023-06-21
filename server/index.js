@@ -14,6 +14,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended : true }));
 
 app.use("/api/post", require("./Router/post.js"));
+app.use("/api/user", require("./Router/user.js"));
 
 app.listen(port, () => {
     //mongoose.set('strictQuery', false);

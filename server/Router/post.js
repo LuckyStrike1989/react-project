@@ -22,7 +22,7 @@ router.post("/submit", (req, res) => {
         temp.postNum = counter.postNum
         const CommunityPost = new Post(temp);
         CommunityPost.save().then(() => {
-            Counter.updateOne({name: "counter"}, {$inc : {postNum : 1}}).then(() => {
+            Counter.updateOne( { name: "counter" }, { $inc : {postNum : 1} } ).then(() => {
                 res.status(200).json({ success: true });
             });
         });
